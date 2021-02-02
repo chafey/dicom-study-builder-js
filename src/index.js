@@ -1,25 +1,4 @@
-const attributeGroups = require('./attributeGroups')
-const getHash = require('./getHash')
-
-const createNormalizedObjects = (sopInstance) => {
-    const normalizedObjects = {}
-    Object.keys(attributeGroups).map((key) => {
-        const group = attributeGroups[key]
-        const groupAttributes = {}
-        let numMapped = 0
-        group.map((keyword)=> {
-            const attr = sopInstance.dataSet[keyword]
-            if(attr) {
-                groupAttributes[keyword] = attr
-                numMapped++
-            }
-        })
-        if(numMapped) {
-            normalizedObjects[key] = groupAttributes
-        }
-    })
-    return normalizedObjects
-}
+const createNormalizedObjects = require('./createNormalizedObjects')
 
 const getOrCreateStudy = (studies, sopInstance) => {
     const studyUid = sopInstance.dataSet['StudyInstanceUID']
@@ -43,11 +22,10 @@ const dicomStudyBuilder = (sopInstances) => {
         // add normalized objects
         Object.keys(normalizedObjects).map((key) => {
             const groupAttributes = normalizedObjects[key]
-            const digest = getHash(groupAttributes)
             if(!study[key]) {
                 study[key] = {}
             }
-            study[key][digest] = groupAttributes
+            study[key] = {...study[key], groupAttributes}
         })
         // add instance specific data
 
