@@ -117,8 +117,8 @@ const enhancedGeneralEquipment = []
 const generalImage = [
     // InstanceNumber = varies
     'PatientOrientation',
-    'ContentDate',
-    'ContentTime',
+    //'ContentDate', - varies
+    //'ContentTime', - varies
     'ImageType',
     // Acquisition Number - varies
     //'AcquisitionDate', - varies
