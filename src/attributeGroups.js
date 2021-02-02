@@ -1,7 +1,7 @@
 
 const patient = [
     'PatientName',
-    'PatientId',
+    'PatientID',
     'PatientBirthDate',
     'PatientSex',
     // TODO: Quality Control Subject
@@ -45,7 +45,12 @@ const generalStudy = [
     'RequestingServiceCodeSequence',
     'ReferencedStudySequence',
     'ProcedureCodeSequence',
-    'ReasonForPerformedProcedureCodeSequence'
+    'ReasonForPerformedProcedureCodeSequence',
+
+    // Extra
+    'PatientAge',
+    'PatientSize',
+    'PatientWeight',
 ]
 
 const patientStudy = [
@@ -136,6 +141,11 @@ const generalImage = [
     'PresentationLUTShape',
     // IrradiationEventUID - varies??
     // RealWorldValueMappingSequence - ??
+
+    'SOPClassUID',
+    'SpecificCharacterSet',
+    'InstanceCreationDate',
+    'InstanceCreationTime'
 ]
 
 const imagePlane = [
@@ -147,6 +157,7 @@ const imagePlane = [
 ]
 
 const imagePixel = [
+    'TransferSyntaxUID',
     'SamplesPerPixel',
     'PhotometricInterpretation',
     'Rows',
